@@ -7,6 +7,7 @@ import LineChartThree from "@/components/custom-ui/charts/line/LineChartThree";
 import LineChartFive from "@/components/custom-ui/charts/line/LineChartFive";
 import RadialChartFive from "@/components/custom-ui/charts/radial/RadialChartFive";
 import { AreaChartSix } from "@/components/custom-ui/charts/area/AreaChartSix";
+import {motion} from "framer-motion";
 
 export default function SuperDashboardPage() {
   const { t } = useTranslation();
@@ -33,6 +34,13 @@ export default function SuperDashboardPage() {
           </>
         ) : ( */}
         <>
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+        >
           <DashboardCard
             loading={false}
             key={"country"}
@@ -81,6 +89,7 @@ export default function SuperDashboardPage() {
               <PersonStanding className="sm:size-[54px] min-w-[32px] min-h-[32px]" />
             }
           />
+          </motion.div>
         </>
         {/* )} */}
       </div>

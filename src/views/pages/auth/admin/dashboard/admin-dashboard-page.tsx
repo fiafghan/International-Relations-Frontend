@@ -7,9 +7,11 @@ import LineChartThree from "@/components/custom-ui/charts/line/LineChartThree";
 import LineChartFive from "@/components/custom-ui/charts/line/LineChartFive";
 import RadialChartFive from "@/components/custom-ui/charts/radial/RadialChartFive";
 import { AreaChartSix } from "@/components/custom-ui/charts/area/AreaChartSix";
+import { motion } from "framer-motion";
 
 export default function AdminDashboardPage() {
   const { t } = useTranslation();
+  const IconStyle = "sm:size-[44px] text-primary dark:text-primary-light";
 
   // const cardLoader = (
   //   <Shimmer className="flex-1 space-y-2 p-4 h-full w-full overflow-hidden">
@@ -33,16 +35,23 @@ export default function AdminDashboardPage() {
             </>
           ) : ( */}
         <>
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+        >
           <DashboardCard
             loading={false}
             key={"country"}
             title={t("country")}
             description={t("january")}
-            className="overflow-hidden flex-1 space-y-2 h-full p-4"
+            className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-gray-900 shadow-sm space-y-2"
             value={100}
             symbol="+"
             icon={
-              <BarChart2 className="sm:size-[54px] min-w-[32px] min-h-[32px]" />
+              <BarChart2 className={IconStyle} />
             }
           />
           <DashboardCard
@@ -50,11 +59,11 @@ export default function AdminDashboardPage() {
             key={"district"}
             title={t("district")}
             description={t("january")}
-            className="overflow-hidden flex-1 space-y-2 h-full p-4"
+            className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-gray-900 shadow-sm space-y-2"
             value={20000}
             symbol="+"
             icon={
-              <BarChart2 className="sm:size-[54px] min-w-[32px] min-h-[32px]" />
+              <BarChart2 className={IconStyle} />
             }
           />
           <DashboardCard
@@ -62,11 +71,11 @@ export default function AdminDashboardPage() {
             key={"area"}
             title={t("area")}
             description={t("area")}
-            className="overflow-hidden flex-1 space-y-2 h-full p-4"
+            className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-gray-900 shadow-sm space-y-2"
             value={566000}
             symbol="+"
             icon={
-              <BarChart2 className="sm:size-[54px] min-w-[32px] min-h-[32px]" />
+              <BarChart2 className={IconStyle} />
             }
           />
           <DashboardCard
@@ -74,13 +83,14 @@ export default function AdminDashboardPage() {
             key={"job"}
             title={t("job")}
             description={t("job")}
-            className="overflow-hidden flex-1 space-y-2 h-full p-4"
+            className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-gray-900 shadow-sm space-y-2"
             value={600}
             symbol="+"
             icon={
               <PersonStanding className="sm:size-[54px] min-w-[32px] min-h-[32px]" />
             }
           />
+          </motion.div>
         </>
         {/* )} */}
       </div>
